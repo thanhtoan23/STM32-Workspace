@@ -1,0 +1,2 @@
+led_matrix.c:10:6:updateLEDMatrix	16	static
+led_matrix.c:186:6:shiftMatrixLeft	16	static
