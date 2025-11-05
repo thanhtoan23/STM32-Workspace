@@ -1,0 +1,30 @@
+/*
+ * sevenseg.c
+ *
+ *  Created on: 4 thg 11, 2025
+ *      Author: PC LEGION
+ */
+
+
+#include "sevenseg.h"
+void displayDigit(int num){
+    // Khai báo mảng ĐÚNG CÚ PHÁP
+    uint16_t segment_patterns[10] = {
+        0x40, // 0: 0b01000000 - SEG6=1, others=0
+        0x79, // 1: 0b01111001 - SEG1,2=0; SEG0,3,4,5,6=1
+        0x24, // 2: 0b00100100
+        0x30, // 3: 0b00110000
+        0x19, // 4: 0b00011001
+        0x12, // 5: 0b00010010
+        0x02, // 6: 0b00000010
+        0x78, // 7: 0b01111000
+        0x00, // 8: 0b00000000
+        0x10  // 9: 0b00010000
+    };
+
+    uint16_t pattern = (num >= 0 && num <= 9) ? segment_patterns[num] : 0x7F;
+
+    // Kiểm tra xem các chân SEG có cùng PORT không
+    // Giả sử tất cả SEG0-6 đều nối vào GPIOB
+    GPIOB->ODR = (GPIOB->ODR & 0xFF00) | (pattern & 0x00FF);
+}

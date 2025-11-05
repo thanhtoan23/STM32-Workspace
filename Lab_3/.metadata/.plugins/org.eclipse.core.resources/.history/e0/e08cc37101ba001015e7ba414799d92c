@@ -1,0 +1,8 @@
+#ifndef INC_TRAFFIC_LIGHT_H_H_
+#define INC_TRAFFIC_LIGHT_H_H_
+
+#include "global.h"
+
+void fsm_auto_mode1_run();
+
+#endif /* INC_TRAFFIC_LIGHT_H_H_ */
